@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <title>General Hospital</title>
+  <style>
+    /* Animated background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;;
+      color: #333;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #a1c4fd, #c2e9fb, #fbc2eb, #a6c0fe);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+nav {
+  width: 600px; /* increase width to fit row layout */
+  margin: 20px auto;
+  background: rgba(118, 159, 182, 0.9);
+  border-radius: 50px; /* curved edges */
+  padding: 15px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 6px 6px 12px rgba(0,0,0,0.5);
+  /* gap: 15px; */
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: row; /* row-wise layout */
+  gap: 15px;           /* spacing between items */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-form select,
+.booking-form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+button {
+  background: #ffb703;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+button:hover {
+  background: #ff9500;
+  transform: translateY(-5px);
+}
+
+
+
+    /* Sections */
+    section {
+      padding: 80px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    section img {
+      width: 45%;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: transform 0.5s ease;
+    }
+    section img:hover {
+      transform: scale(1.05);
+    }
+    .content {
+      width: 50%;
+      animation: fadeInUp 1s ease forwards;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #0077b6;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .reverse {
+      flex-direction: row-reverse;
+    }
+
+    .reverse img{
+        width: 400px;
+        height: 470px;
+    }
+
+    /* Awards */
+    .awards {
+      text-align: center;
+      flex-direction: column;
+        margin: 40px;   
+    }
+    .award-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    
+      /* flex-wrap: wrap; */
+    }
+    .award-card {
+      background: rgba(118, 159, 182, 0.9);
+      color: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      width: 380px;
+      transition: transform 0.4s ease;
+        text-align: justify;
+    }
+    .award-card:hover {
+      transform: translateY(-15px);
+    }
+
+    .award-card h3{
+        text-align: center;
+    }
+/* Branches */
+.branches {
+  flex-direction: column;
+}
+
+.branch-gallery {
+  display: flex;              /* row layout */
+  /* justify-content: center;    center images */
+  /* flex-wrap: wrap;            wrap into next row if space ends */
+  gap: 30px;                  /* spacing between images */
+  margin-top: 30px;
+}
+
+.branch-gallery img {
+  width: 320px;               /* fixed width for uniform images */
+  height: auto;               /* keeps aspect ratio */
+  border-radius: 15px;
+  object-fit: cover;          /* crop nicely if needed */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+/* Color Variables */
+:root {
+  --footer-heading: #ffffff; /* white */
+  --brand-500: #3b82f6;      /* blue accent */
+  --brand-600: #2563eb;      /* darker blue */
+}
+
+.footer {
+  color: white;
+  padding: 48px 0 24px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  background: #0f172a;   /* dark navy directly */
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: -35px;
+}
+
+.footer-section h4 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  color: var(--footer-heading);
+}
+
+.footer-section p {
+  margin: 0 0 20px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* Brand section */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.brand i {
+  color: white;
+  font-size: 20px;
+}
+
+.brand strong {
+  font-size: 18px;
+  color: white;
+}
+
+/* Social Icons */
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  background: #334155;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: var(--brand-600);
+  transform: translateY(-2px);
+}
+
+/* Links */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: white;
+}
+
+/* Contact info */
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.contact-info i {
+  color: var(--brand-500);
+  width: 16px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+/* Animations */
+@media (prefers-reduced-motion: reduce){
+	*{ animation:none !important; transition:none !important; }
+}
+@keyframes fadeDown { from{opacity:0; transform: translateY(-16px);} to{opacity:1; transform:none;} }
+@keyframes fadeUp   { from{opacity:0; transform: translateY(16px);}  to{opacity:1; transform:none;} }
+@keyframes slideRight{ from{opacity:0; transform: translateX(-24px);} to{opacity:1; transform:none;} }
+@keyframes popIn    { from{opacity:0; transform: scale(.94);} to{opacity:1; transform: scale(1);} }
+@keyframes pulse    { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes float    { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+
+/* Responsive */
+@media (max-width: 1024px){
+	.hero-inner{ grid-template-columns: 1fr; }
+	.hero-visual{ order:-1; }
+	.services-grid{ grid-template-columns: repeat(2, 1fr); }
+	.doctors-grid{ grid-template-columns: repeat(2, 1fr); }
+	.testimonials-grid{ grid-template-columns: repeat(2, 1fr); }
+	.about-inner{ grid-template-columns: 1fr; }
+	.contact-inner{ grid-template-columns: 1fr; }
+	.footer-inner{ grid-template-columns: repeat(2, 1fr); }
+	.dept-grid{ grid-template-columns: repeat(3, 1fr); }
+	.stat-grid{ grid-template-columns: repeat(2, 1fr); }
+	.finder-bar{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px){
+	.mobile-menu-btn{
+		display: block;
+	}
+	.nav-links{
+		display: none;
+	}
+	.cta-row{ 
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.services-grid{ grid-template-columns: 1fr; }
+	.doctors-grid{ grid-template-columns: 1fr; }
+	.testimonials-grid{ grid-template-columns: 1fr; }
+	.footer-inner{ grid-template-columns: 1fr; }
+	.finder-bar{ grid-template-columns: 1fr; }
+	.dept-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+	.hero-copy h1{
+		font-size: 28px;
+	}
+	.dept-grid{ grid-template-columns: 1fr; }
+	.stat-grid{ grid-template-columns: 1fr; }
+	.finder-bar{ grid-template-columns: 1fr; }
+	.about-features{
+		gap: 16px;
+	}
+	.contact-info{
+		gap: 16px;
+	}
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <form class="booking-form">
+      <select>
+        <option>Select Department</option>
+        <option>Cardiology</option>
+        <option>Neurology</option>
+        <option>Surgery</option>
+      </select>
+      <select>
+        <option>Select Doctor</option>
+        <option>Dr. Williams</option>
+        <option>Dr. Johnson</option>
+        <option>Dr. Brown</option>
+      </select>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </nav>
+
+  <!-- Section 1: About Hospital -->
+  <section id="about">
+    <img src="./hospital image.jpeg" alt="Hospital Image">
+    <div class="content">
+      <h2>About Our Hospital</h2>
+      <p>General Hospital is a leading healthcare institution with over 25 years of service in providing affordable, world-class medical care. Our hospital is equipped with state-of-the-art technology, advanced diagnostic laboratories, modern operation theatres, and a dedicated team of doctors and nurses.
+
+We specialize in comprehensive medical services including cardiology, neurology, oncology, pediatrics, orthopedics, dermatology, gastroenterology, gynecology, general surgery, and emergency care.
+
+Our mission is simple:<br>
+✔ To deliver compassionate care.<br>
+✔ To maintain the highest medical standards.<br>
+✔ To be a beacon of hope for patients and families.</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Owner -->
+  <section id="owner" class="reverse">
+    <img src="./doctor image.jpeg" alt="Hospital Owner">
+    <div class="content">
+      <h2>Our Founder</h2>
+      <p>Dr. John Smith, the visionary founder of General Hospital, began his medical career with a simple but powerful mission — to make quality healthcare accessible to every individual, regardless of their background.
+
+What started as a 50-bed clinic in 1995 has today grown into a 1,000-bed multi-specialty hospital, setting benchmarks in patient care, medical innovation, and community service. His leadership has transformed General Hospital into a center of excellence, attracting patients not only from the region but also from neighboring countries.
+
+Dr. Smith’s vision is deeply rooted in the principle of “Healthcare with Humanity” — a belief that advanced medical science should always be coupled with compassion. Under his guidance, the hospital has built a culture where no patient is ever denied treatment due to financial limitations.
+
+Over the years, he has introduced:
+
+Charity Care Programs for underprivileged families.
+
+Health Awareness Campaigns in rural areas to spread preventive healthcare knowledge.
+
+Training & Research Centers to empower young doctors and medical students.
+
+International Collaborations with leading medical institutes to bring cutting-edge treatments to patients locally.</p>
+    </div>
+  </section>
+
+  <!-- Section 3: Doctors -->
+  <section id="doctors">
+    <img src="./doctors group.jpeg" alt="Doctor Image" width="500" height="350">
+    <div class="content">
+      <h2>Our Specialist Doctors</h2>
+      <p>We have over 300 doctors across multiple departments:<br>
+
+✔ Cardiology – Renowned heart specialists performing advanced angioplasty, bypass surgery, and heart transplants.<br>
+
+✔ Neurology & Neurosurgery – Expertise in stroke management, epilepsy, brain tumor removal, and spine surgery.<br>
+
+✔ Pediatrics & Neonatology – Dedicated child care units with specialized ICU for newborns.<br>
+
+✔ Orthopedics – World-class joint replacements, sports injury treatments, and trauma surgery.<br>
+
+✔ Emergency & Critical Care – 24x7 emergency department with advanced life support systems.</p>
+    </div>
+  </section>
+
+  <!-- Section 4: Awards -->
+  <section id="awards" class="awards">
+    <h2>Our Awards</h2>
+    <div class="award-list">
+      <div class="award-card"><h3>🏆 Best Healthcare 2020<br><hr></h3>In 2020, General Hospital was recognized with the prestigious Best Healthcare Award by the National Healthcare Council. This award was presented in acknowledgment of our exceptional commitment to patient-centered care, adoption of cutting-edge medical technology, and delivery of world-class treatment standards.</div>
+      <div class="award-card"><h3>🥇 Excellence in Surgery 2021<br><hr></h3>In 2021, General Hospital was honored with the Excellence in Surgery Award by the International Medical Forum. This recognition was awarded for our hospital’s achievements in delivering world-class surgical care, setting new standards in patient safety, and adopting the most advanced surgical practices.</div>
+      <div class="award-card"><h3>🌟 Patient Care Award 2022<br><hr></h3>In 2022, General Hospital proudly received the prestigious Patient Care Award from the Global Health Association, recognizing our unwavering commitment to compassionate, patient-centered healthcare. This award reflects our dedication not just to medical excellence, but also to the emotional, psychological, and social well-being of every patient who enters our doors.</div>
+    </div>
+  </section>
+
+  <!-- Section 5: Branches -->
+  <section id="branches" class="branches">
+    <h2>Our Branches</h2>
+    <div class="branch-gallery">
+      <img src="branch1.jpeg" alt="Branch 1">
+      <img src="branch2.jpeg" alt="Branch 2">
+      <img src="branch3.jpeg" alt="Branch 3">
+      <img src="branch4.jpeg" alt="Branch 4">
+    </div>
+  </section>
+ <footer>
+    <section class="footer-container">
+
+      <!-- brand -->
+      <div class="footer-section">
+        <div class="brand">
+          <i class="fas fa-plus"></i>
+          <div>
+            <strong>Generalcare Specialist Hospital</strong>
+          </div>
+        </div>
+        <p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- quick links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- services -->
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Emergency Care</a></li>
+          <li><a href="#">Surgery</a></li>
+          <li><a href="#">Laboratory</a></li>
+          <li><a href="#">Radiology</a></li>
+          <li><a href="#">Pharmacy</a></li>
+        </ul>
+      </div>
+
+      <!-- contact info -->
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> 123 Medical Center Drive</p>
+          <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope"></i> info@generalcare.com</p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Generalcare Specialist Hospital. All rights reserved.</p>
+    <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+    </div>
+    
+  </footer>
+
+</body>
+</html>

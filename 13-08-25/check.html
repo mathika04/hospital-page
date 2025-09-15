@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>General Care Specialist Hospital - Premium Healthcare Services</title>
+	<meta name="description" content="General care Specialist Hospital provides premium healthcare treatments and medical services with expert doctors and state-of-the-art facilities.">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="checkstyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+</head>
+<body>
+	<header class="navbar">
+		<div class="container nav-inner">
+			<div class="brand">
+				<!-- <div class="brand-mark" aria-hidden="true">
+					<i class="fas fa-plus"></i>
+				</div> -->
+				<div class="logo">
+					<img src="./stacklylogo.png" alt="stacklylogo" width="300" height="200">
+				</div>
+			</div>
+
+
+<nav>
+  <ul class="sidebar" id="sidebar">
+    <li onclick="hideSidebar()">
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+          <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 
+          231 231-42 42-231-231-231 231Z"/>
+        </svg>
+      </a>
+    </li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#departments">Departments</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <ul>
+    <li><a href="../home-page-2/index.html">Home</a></li>
+    <li class="hideOnMobile"><a href="#services">Services</a></li>
+    <li class="hideOnMobile"><a href="#departments">Departments</a></li>
+    <li class="hideOnMobile"><a href="#doctors">Doctors</a></li>
+    <li class="hideOnMobile"><a href="#about">About</a></li>
+    <li class="hideOnMobile"><a href="#contact">Contact</a></li>
+    <li class="menu-button" onclick="showSidebar()">
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+          <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
+	
+			<!-- <button class="mobile-menu-btn" id="mobileMenuBtn"> -->
+				<!-- <i class="fas fa-bars"></i> -->
+			<!-- </button> -->
+		</div>
+	</header>
+  <style>
+    /* ---------- Global ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f2f5;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+
+
+	 .section-header {
+      text-align: center;
+      padding: 40px 20px 20px;
+	  
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #0c4a6e;
+    }
+    .section-header .subtle {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px 40px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 4px 8px 10px rgba(0,0,0,0.10);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+	  background-color: #ecf8fcef;
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: 	#2f5f89;
+      margin-bottom: 12px;
+    }
+    .service-card h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: rgba(4, 5, 5, 0.877);
+    }
+    .service-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    .service-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #2f5f89;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .service-link:hover {
+      color: #081d30;
+    }
+
+    /* Right Slide Panel */
+    .panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 400px;
+      max-width: 90%;
+      height: 100%;
+      background: linear-gradient(135deg, #e0f2fe, #ffe4e1);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+      padding: 20px;
+      transition: right 0.5s ease;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+    .panel.open {
+      right: 0;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-header h3 {
+      margin: 0;
+      color: #0c4a6e;
+    }
+    .close-btn {
+      background: #f97316;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .close-btn:hover {
+      background: #ea580c;
+    }
+    .panel img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 15px 0;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .panel p {
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* Background overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+	#panelImage {
+  width: 100%;          /* take full width of panel */
+  max-height: 300px;    /* keep it short, so text fits */
+  object-fit: cover;    /* crops edges, keeps aspect ratio */
+  border-radius: 12px;  /* rounded corners */
+  margin: 15px 0;
+  display: block;
+  margin-top: 50px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Slide Panel */
+.info-panel {
+  position: fixed;
+  top: 0;
+  right: -100%; /* hidden by default */
+  width: 400px;
+  height: 100%;
+  background: linear-gradient(135deg, #ffe5d9, #cce7ff); /* peach-blue theme */
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.4s ease-in-out;
+  z-index: 999;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-panel.open {
+  right: 0; /* slide in when open */
+}
+
+.info-panel img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.go-home-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ffe5d9, #cce7ff); /* peach-blue theme */
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.go-home-btn:hover {
+  background: linear-gradient(135deg, #ffd4c2, #b3daff);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* Arrow animation */
+.go-home-btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.go-home-btn:hover .arrow {
+  transform: translateX(6px);
+}
+
+  </style>
+</head>
+<style>
+    		/* ---------- Floating Buttons ---------- */ 
+.floating-buttons { position: relative; top: 20px; right: 20px; z-index: 1100; margin-left: 1200px; } 
+.floating-buttons button { background: #99D4E9; 
+  color: white; 
+  border: none;
+   padding: 12px 24px; 
+   font-size: 16px;
+   border-radius: 8px;
+    cursor: pointer; 
+    margin: 5px; 
+    transition: 0.3s; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+  } 
+  .floating-buttons button:hover { background: #6FC9E7; transform: translateY(-6px); } 
+  
+/* ---------- Popup Container ---------- */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: white;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  width: 768px;
+  max-width: 90%;
+  min-height: 480px;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeSlideIn 0.4s ease forwards;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translate(-50%, 40%) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ---------- Form Styling ---------- */
+.form-container { position: absolute; top: 0; height: 100%; transition: all 0.6s ease-in-out; }
+form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 18px;
+}
+h1 { font-weight: bold; margin-bottom: 10px; }
+input { background-color: #eee; border: none; padding: 12px 15px; margin: 8px 0; width: 100%; border-radius: 5px; }
+button.form-btn {
+  border-radius: 20px;
+  border: none;
+  background-color: #6FC9E7;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button.form-btn.ghost {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+/* Position forms for swapping */
+.sign-in-container { margin-left: 0; width: 50%; z-index: 2; }
+.sign-up-container { margin-left: 0; width: 50%; opacity: 0; z-index: 1; }
+.form-popup.right-panel-active .sign-in-container { transform: translateX(100%); }
+.form-popup.right-panel-active .sign-up-container { transform: translateX(100%); opacity: 1; z-index: 5; }
+
+/* ---------- Overlay ---------- */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+.overlay {
+  background: linear-gradient(to right, #6FC9E7, #99D4E9);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+.form-popup.right-panel-active .overlay-container { transform: translateX(-100%); }
+.form-popup.right-panel-active .overlay { transform: translateX(50%); }
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+.overlay-left { transform: translateX(-20%); }
+.overlay-right { right: 0; transform: translateX(0); }
+.form-popup.right-panel-active .overlay-left { transform: translateX(0); }
+.form-popup.right-panel-active .overlay-right { transform: translateX(20%); }
+
+/* ---------- Close Button ---------- */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: #a3b3ca;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+     /* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .form-popup { width: 100%; min-height: 600px; }
+  .overlay-container, .form-container { width: 100% !important; }
+  .overlay { display: none; }
+}
+
+/* -------------------------
+   Navbar Responsive Toggle
+------------------------- */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  #mobileMenuBtn {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+}
+
+/* -------------------------
+   Service Panel Styling
+------------------------- */
+.panel {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: right 0.4s ease;
+  z-index: 1200;
+  overflow-y: auto;
+}
+
+.panel.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1100;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.panel img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+/* -------------------------
+   Close Button
+------------------------- */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #c0392b;
+}
+
+/* -------------------------
+   Go Home Button (Reverse Arrow)
+------------------------- */
+.go-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: #3498db;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.go-home-btn:hover {
+  background: #2980b9;
+}
+
+.go-home-btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.go-home-btn:hover .arrow {
+  transform: translateX(-6px); /* reverse animation */
+}
+</style>
+<body>
+
+		<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button onclick="openPopup('signin')">Sign In</button>
+  <button onclick="openPopup('signup')">Sign Up</button>
+</div>
+
+
+<!-- Popup Form -->
+<div class="form-popup" id="authPopup">
+  <button class="close-btn" onclick="closePopup()">X</button>
+
+  <!-- Sign In Form -->
+  <div class="form-container sign-in-container">
+    <form id="signin-form">
+      <h1>Sign In</h1>
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button class="form-btn" type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <!-- Sign Up Form -->
+  <div class="form-container sign-up-container">
+    <form id="signup-form">
+      <h1>Create Account</h1>
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button class="form-btn" type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To stay connected, sign in with your personal info</p>
+        <button class="form-btn ghost" id="signIn">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your details and start your journey with us</p>
+        <button class="form-btn ghost" id="signUp">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const authPopup = document.getElementById('authPopup');
+const signUpBtn = document.getElementById('signUp');
+const signInBtn = document.getElementById('signIn');
+
+function openPopup(type) {
+  authPopup.style.display = 'block';
+  if (type === 'signup') authPopup.classList.add('right-panel-active');
+  else authPopup.classList.remove('right-panel-active');
+}
+
+function closePopup() { authPopup.style.display = 'none'; }
+
+signUpBtn.addEventListener('click', () => authPopup.classList.add("right-panel-active"));
+signInBtn.addEventListener('click', () => authPopup.classList.remove("right-panel-active"));
+
+// Sign Up Submit
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  window.location.href = "404page.html";
+  this.reset(); closePopup();
+});
+
+// Sign In Submit
+document.getElementById('signin-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  window.location.href = "404page.html";
+  this.reset(); closePopup();
+});
+</script>
+
+	<section class="hero" id="home">
+		<div class="container hero-inner">
+			<div class="hero-copy">
+				<h2>Premium Treatments for a Healthy Lifestyle</h2>
+				<p>
+					Experience world-class healthcare with our team of expert specialists. We provide comprehensive medical services with cutting-edge technology and compassionate care for you and your family.
+				</p>
+
+				<div class="cta-row">
+					<a href="#services" class="btn btn-primary">
+						<i class="fas fa-stethoscope"></i>
+						Our Services
+					</a>
+					<div class="online-chip">
+						<span class="dot"></span> 
+						2500+ Doctors Online
+					</div>
+				</div>
+
+				<div class="search-card">
+					<div class="search-icon">
+						<i class="fas fa-search"></i>
+					</div>
+					<input type="text" placeholder="Search for doctors, departments, or treatments" aria-label="Search medical services"/>
+					<button class="btn btn-dark" onclick="window.location.href='404page.html'"><i class="fas fa-search"></i> Search</button>
+
+				</div>
+			</div>
+
+			<div class="hero-visual">
+				<div class="blob"></div>
+				<img src="./doctor.png" alt="Professional Doctor" class="doctor-img">
+				<div class="floating-card">
+					<div class="card-icon">
+						<i class="fas fa-user-md"></i>
+					</div>
+					<div class="card-content">
+						<div class="card-title">Dr. Johnson</div>
+						<div class="card-subtitle">Cardiologist</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="stats">
+		<div class="container stat-grid">
+			<div class="stat">
+				<div class="stat-icon">
+					<i class="fas fa-smile"></i>
+				</div>
+				<div class="stat-value">4500+</div>
+				<div class="stat-label">Happy Patients</div>
+			</div>
+			<div class="stat">
+				<div class="stat-icon">
+					<i class="fas fa-bed"></i>
+				</div>
+				<div class="stat-value">200</div>
+				<div class="stat-label">Hospital Rooms</div>
+			</div>
+			<div class="stat">
+				<div class="stat-icon">
+					<i class="fas fa-trophy"></i>
+				</div>
+				<div class="stat-value">500+</div>
+				<div class="stat-label">Awards Won</div>
+			</div>
+			<div class="stat">
+				<div class="stat-icon">
+					<i class="fas fa-ambulance"></i>
+				</div>
+				<div class="stat-value">20+</div>
+				<div class="stat-label">Ambulances</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="finder" id="appointment">
+		<div class="container">
+			<div class="finder-header">
+				<h2>Book Your Appointment</h2>
+				<p>Find the right doctor and schedule your visit in minutes</p>
+			</div>
+			<div class="finder-bar">
+				<select>
+					<option selected>Select Department</option>
+					<option>Cardiology</option>
+					<option>Neurology</option>
+					<option>Orthopedics</option>
+					<option>Radiology</option>
+					<option>Dermatology</option>
+					<option>Pediatrics</option>
+				</select>
+				<select>
+					<option selected>Select Doctor</option>
+					<option>Dr. Sarah Johnson</option>
+					<option>Dr. Michael Chen</option>
+					<option>Dr. Emily Rodriguez</option>
+					<option>Dr. David Kim</option>
+				</select>
+				<input type="date" />
+				<select>
+					<option selected>Select Location</option>
+					<option>Main Campus</option>
+					<option>City Clinic</option>
+					<option>North Branch</option>
+				</select>
+				<button class="btn btn-dark" onclick="window.location.href='404page.html'"><i class="fas fa-search"></i> Search</button>
+
+			</div>
+		</div>
+	</section>
+<main>
+	<section class="departments" id="departments">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Departments</h2>
+      <p class="subtle">Comprehensive healthcare services across all major medical specialties</p>
+    </div>
+    <div class="dept-grid">
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-stethoscope"></i></div>
+        <div class="dept-name">General Medicine</div>
+        <div class="dept-desc">Primary care and preventive medicine</div>
+      </div>
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-heart"></i></div>
+        <div class="dept-name">Cardiology</div>
+        <div class="dept-desc">Heart and cardiovascular care</div>
+      </div>
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-lungs"></i></div>
+        <div class="dept-name">Pulmonology</div>
+        <div class="dept-desc">Respiratory system treatment</div>
+      </div>
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-tooth"></i></div>
+        <div class="dept-name">Dental Care</div>
+        <div class="dept-desc">Oral health and dental surgery</div>
+      </div>
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-brain"></i></div>
+        <div class="dept-name">Neurology</div>
+        <div class="dept-desc">Brain and nervous system care</div>
+      </div>
+      <div class="dept" onclick="window.location.href='404page.html'">
+        <div class="dept-icon"><i class="fas fa-bone"></i></div>
+        <div class="dept-name">Orthopedics</div>
+        <div class="dept-desc">Bone and joint treatment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+	<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p class="subtle">State-of-the-art medical services with compassionate care</p>
+    </div>
+    <div class="services-grid">
+      
+	<div class="service-card">
+        <div class="service-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Laboratory Services</h3>
+        <p>Advanced diagnostic testing with quick turnaround times and accurate results.</p>
+<a class="service-link learn-more" data-service="lab">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+    </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-x-ray"></i></div>
+        <h3>Imaging & Radiology</h3>
+        <p>Cutting-edge imaging technology including MRI, CT scans, and X-rays.</p>
+<a class="service-link learn-more" data-service="imaging">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-procedures"></i></div>
+        <h3>Surgical Procedures</h3>
+        <p>Minimally invasive and traditional surgical procedures with expert surgeons.</p>
+        <!-- <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a> -->
+<a class="service-link learn-more" data-service="surgery">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-pills"></i></div>
+        <h3>Pharmacy Services</h3>
+        <p>Full-service pharmacy with prescription medications and health consultations.</p>
+        <!-- <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a> -->
+<a class="service-link learn-more" data-service="pharmacy">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-baby"></i></div>
+        <h3>Maternity Care</h3>
+        <p>Comprehensive prenatal, delivery, and postnatal care for mothers and babies.</p>
+        <!-- <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a> -->
+<a class="service-link learn-more" data-service="maternity">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Emergency Care</h3>
+        <p>24/7 emergency medical services with rapid response and critical care.</p>
+        <!-- <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a> -->
+<a class="service-link learn-more" data-service="emergency">
+  Learn More <i class="fas fa-arrow-right"></i>
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+  <!-- Right Slide Panel -->
+  <div class="panel" id="infoPanel">
+    <div class="panel-header">
+      <h3 id="panelTitle"></h3>
+      <button class="close-btn" onclick="closePanel()">✖</button>
+    </div>
+    <img id="panelImage" src="" alt="">
+    <p id="panelContent"></p>
+  </div>
+
+	<section class="doctors" id="doctors">
+		<div class="container">
+			<div class="section-header">
+				<h2>Our Expert Doctors</h2>
+				<p class="subtle">Meet our team of highly qualified and experienced medical professionals</p>
+			</div>
+			<div class="doctors-grid">
+				<div class="doctor-card">
+					<div class="doctor-image">
+						<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=300&fit=crop&crop=face" alt="Dr. Sarah Johnson">
+					</div>
+					<div class="doctor-info">
+						<h3>Dr. Sarah Johnson</h3>
+						<p class="specialty">Cardiologist</p>
+						<p class="experience">15+ years experience</p>
+						<div class="doctor-stats">
+							<span><i class="fas fa-star"></i> 4.9</span>
+							<span><i class="fas fa-user"></i> 1200+ patients</span>
+						</div>
+						<div class="card-footer">
+    						<button class="btn-outline" onclick="window.location.href='404page.html'">Book Appointment</button>
+  						</div>
+					</div>
+				</div>
+				<div class="doctor-card">
+					<div class="doctor-image">
+						<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=300&fit=crop&crop=face" alt="Dr. Michael Chen">
+					</div>
+					<div class="doctor-info">
+						<h3>Dr. Michael Chen</h3>
+						<p class="specialty">Neurologist</p>
+						<p class="experience">12+ years experience</p>
+						<div class="doctor-stats">
+							<span><i class="fas fa-star"></i> 4.8</span>
+							<span><i class="fas fa-user"></i> 980+ patients</span>
+						</div>
+						<div class="card-footer">
+    						<button class="btn-outline" onclick="window.location.href='404page.html'">Book Appointment</button>
+  						</div>
+					</div>
+				</div>
+				<div class="doctor-card">
+					<div class="doctor-image">
+						<img src="https://media.istockphoto.com/id/512294804/photo/young-woman-hispanic-doctor-nurse-in-office.jpg?s=2048x2048&w=is&k=20&c=2-HATamwMIP3uXQ2eUKckU21AKG7euQsOtBlK3phV9Y=" alt="Dr. Emily Rodriguez">					</div>
+					<div class="doctor-info">
+						<h3>Dr. Emily Rodriguez</h3>
+						<p class="specialty">Pediatrician</p>
+						<p class="experience">10+ years experience</p>
+						<div class="doctor-stats">
+							<span><i class="fas fa-star"></i> 4.9</span>
+							<span><i class="fas fa-user"></i> 1500+ patients</span>
+						</div>
+						<div class="card-footer">
+    						<button class="btn-outline" onclick="window.location.href='404page.html'">Book Appointment</button>
+  						</div>
+					</div>
+				</div>
+				<div class="doctor-card">
+					<div class="doctor-image">
+						<img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&h=300&fit=crop&crop=face" alt="Dr. David Kim">
+					</div>
+					<div class="doctor-info">
+						<h3>Dr. David Kim</h3>
+						<p class="specialty">Orthopedic Surgeon</p>
+						<p class="experience">18+ years experience</p>
+						<div class="doctor-stats">
+							<span><i class="fas fa-star"></i> 4.7</span>
+							<span><i class="fas fa-user"></i> 800+ patients</span>
+						</div>
+						<div class="card-footer">
+    						<button class="btn-outline" onclick="window.location.href='404page.html'">Book Appointment</button>
+  						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="about" id="about">
+		<div class="container">
+			<div class="about-inner">
+				<div class="about-content">
+					<h2>About General Care Hospital</h2>
+					<p>Founded in 1995, General Care Specialist Hospital has been at the forefront of medical excellence for over 25 years. We are committed to providing the highest quality healthcare services with compassion, innovation, and patient-centered care.</p>
+					
+					<div class="about-features">
+						<div class="feature">
+							<i class="fas fa-award"></i>
+							<div>
+								<h4>Accredited Excellence</h4>
+								<p>JCI accredited hospital with international standards</p>
+							</div>
+						</div>
+						<div class="feature">
+							<i class="fas fa-users"></i>
+							<div>
+								<h4>Expert Team</h4>
+								<p>Board-certified specialists with decades of experience</p>
+							</div>
+						</div>
+						<div class="feature">
+							<i class="fas fa-cog"></i>
+							<div>
+								<h4>Modern Technology</h4>
+								<p>State-of-the-art medical equipment and facilities</p>
+							</div>
+						</div>
+					</div>
+					<button type="button" onclick="window.location.href='about1.html'">Get more info</button>
+				</div>
+				<div class="about-image">
+					<img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&h=400&fit=crop" alt="Hospital Building">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact" id="contact">
+		<div class="container">
+			<div class="section-header">
+				<h2>Contact Us</h2>
+				<p class="subtle">Get in touch with us for appointments, inquiries, or emergency care</p>
+			</div>
+			<div class="contact-inner">
+				<div class="contact-info">
+					<div class="contact-item">
+						<div class="contact-icon">
+							<i class="fas fa-map-marker-alt"></i>
+						</div>
+						<div>
+							<h4>Address</h4>
+							<p>123 Medical Center Drive<br>Healthcare District, HC 12345</p>
+						</div>
+					</div>
+					<div class="contact-item">
+						<div class="contact-icon">
+							<i class="fas fa-phone"></i>
+						</div>
+						<div>
+							<h4>Phone</h4>
+							<p>Emergency: (555) 123-4567<br>Appointments: (555) 987-6543</p>
+						</div>
+					</div>
+					<div class="contact-item">
+						<div class="contact-icon">
+							<i class="fas fa-envelope"></i>
+						</div>
+						<div>
+							<h4>Email</h4>
+							<p>info@generalcare.com<br>appointments@generalcare.com</p>
+						</div>
+					</div>
+					<div class="contact-item">
+						<div class="contact-icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<div>
+							<h4>Hours</h4>
+							<p>24/7 Emergency Care<br>Mon-Fri: 8AM-8PM<br>Sat-Sun: 9AM-6PM</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-wrapper">
+					<form>
+					<input type="text" placeholder="Your Name" required />
+					<input type="email" placeholder="Your Email" required />
+					<input type="tel" placeholder="Your Phone" required />
+
+					<select required>
+						<option value="" disabled selected>Select Department</option>
+						<option value="general medicine">General medicine</option>
+						<option value="cardiology">Cardiology</option>
+						<option value="neurology">Neurology</option>
+						<option value="orthopedics">Orthopedics</option>
+						<option value="others">Others</option>
+					</select>
+
+					<textarea placeholder="Your Message" required></textarea>
+
+					<button type="submit" onclick="window.location.href='404page.html'">
+						<i>📨</i> Send Message
+					</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+		<!-- <section class="testimonials" id="testimonials">
+		<div class="container">
+			<div class="section-header">
+				<h2>Patient Testimonials</h2>
+				<p class="subtle">What our patients say about their experience with us</p>
+			</div>
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<div class="testimonial-content">
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p>"The care I received at Generalcare was exceptional. The doctors were knowledgeable and the staff was incredibly caring. I felt safe and well-cared for throughout my entire stay."</p>
+					</div>
+					<div class="testimonial-author">
+						<img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Sarah Wilson">
+						<div>
+							<h4>Sarah Wilson</h4>
+							<span>Cardiology Patient</span>
+						</div>
+					</div>
+				</div>
+				<div class="testimonial-card">
+					<div class="testimonial-content">
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p>"Dr. Chen and his team were amazing. They explained everything clearly and made sure I understood my treatment plan. The facilities are modern and the care is top-notch."</p>
+					</div>
+					<div class="testimonial-author">
+						<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Robert Martinez">
+						<div>
+							<h4>Robert Martinez</h4>
+							<span>Neurology Patient</span>
+						</div>
+					</div>
+				</div>
+				<div class="testimonial-card">
+					<div class="testimonial-content">
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p>"As a parent, I was worried about my child's surgery. Dr. Rodriguez and the pediatric team were wonderful - they made us feel comfortable and confident throughout the process."</p>
+					</div>
+					<div class="testimonial-author">
+						<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Jennifer Lee">
+						<div>
+							<h4>Jennifer Lee</h4>
+							<span>Pediatric Patient Parent</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+	</main>
+
+	<!-- Go Home Button -->
+<a href="https://mathika0404.github.io/logo-change/" class="go-home-btn">
+  <span>Go Home 2</span>
+  <span class="arrow">➜</span>
+</a>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-inner">
+				<div class="footer-section">
+					<div class="brand">
+						<div class="brand-mark" aria-hidden="true">
+							<i class="fas fa-plus"></i>
+						</div>
+						<div class="brand-text">
+							<strong>General Care</strong>
+							<span>Specialist Hospital</span>
+						</div>
+					</div>
+					<p>Providing exceptional healthcare services with compassion and excellence since 1995.</p>
+					<div class="social-links">
+						<a href="./404page.html"><i class="fab fa-facebook"></i></a>
+						<a href="./404page.html"><i class="fab fa-twitter"></i></a>
+						<a href="./404page.html"><i class="fab fa-linkedin"></i></a>
+						<a href="./404page.html"><i class="fab fa-instagram"></i></a>
+					</div>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="#home">Home</a></li>
+						<li><a href="#services">Services</a></li>
+						<li><a href="#doctors">Doctors</a></li>
+						<li><a href="#about">About Us</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h4>Services</h4>
+					<ul>
+						<li><a href="#">Emergency Care</a></li>
+						<li><a href="#">Surgery</a></li>
+						<li><a href="#">Laboratory</a></li>
+						<li><a href="#">Radiology</a></li>
+						<li><a href="#">Pharmacy</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h4>Contact Info</h4>
+					<div class="contact-info-footer">
+						<p><i class="fas fa-map-marker-alt"></i> 123 Medical Center Drive</p>
+						<p><i class="fas fa-phone"></i> (555) 123-4567</p>
+						<p><i class="fas fa-envelope"></i> info@generalcare.com</p>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; <span id="currentYear"></span> Generalcare Specialist Hospital. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+	<script>
+  // Force back button to always go to home section
+//   window.addEventListener("popstate", function (event) {
+//     window.location.hash = "#home"; // Redirect to Home
+//   });
+
+  // Optional: Push a dummy state so that the back button triggers popstate
+  window.history.pushState(null, null, window.location.href);
+  window.addEventListener("popstate", function () {
+    window.history.pushState(null, null, window.location.href);
+    window.location.hash = "#home";
+  });
+</script>
+  <!-- Slide Panel -->
+ <div id="infoPanel" class="info-panel">
+  <button class="close-btn" onclick="closePanel()">×</button>
+  <h2 id="panelTitle"></h2>
+  <img id="panelImage" src="" alt="Service Image">
+  <p id="panelContent"></p>
+</div>
+
+  <script>
+    const panel = document.getElementById('infoPanel');
+    const overlay = document.getElementById('overlay');
+    const panelTitle = document.getElementById('panelTitle');
+    const panelContent = document.getElementById('panelContent');
+    const panelImage = document.getElementById('panelImage');
+	
+
+const serviceInfo = {
+  lab: {
+    title: "Laboratory Services",
+    content: `
+✅ Comprehensive Testing: Blood tests, urine analysis, microbiology, histopathology, and genetic screenings.
+✅ Rapid Turnaround: Most test results available within hours for urgent cases.
+✅ Automated Systems: Cutting-edge machines to reduce human error and improve accuracy.
+✅ Specialized Panels: Heart health, liver function, kidney function, hormonal profiles, and cancer markers.
+✅ Preventive Health: Annual health check-up packages for early detection of chronic diseases.
+✅ Safety & Hygiene: Strict infection control, sterilization, and handling protocols.
+✅ Expert Consultation: Doctors and lab specialists available to interpret results and guide treatment.`,
+    image: "images/lab.jpg"   // local image path
+  },
+  imaging: {
+    title: "Imaging & Radiology",
+  content: `
+✅ X-Rays: Quick and effective imaging for bones, chest, and soft tissues.
+✅ Ultrasound: Safe, non-invasive imaging for abdominal, pelvic, pregnancy, and vascular assessments.
+✅ CT Scans (Computed Tomography): High-resolution cross-sectional images for detailed diagnosis of internal organs.
+✅ MRI (Magnetic Resonance Imaging): Advanced imaging of the brain, spine, joints, and soft tissues with high clarity.
+✅ Mammography: Specialized imaging for early detection of breast cancer.
+✅ Interventional Radiology: Minimally invasive, image-guided procedures such as biopsies and catheter placements.
+✅ Digital Reporting: Fast, accurate reports available electronically for seamless doctor–patient communication.`,
+    image: "images/imaging.jpg"
+  },
+  surgery: {
+    title: "Surgical Procedures",
+    content: `
+✅ General Surgery: Treatment of common conditions such as appendicitis, hernia, and gallbladder disorders.
+✅ Minimally Invasive Surgery: Laparoscopic and keyhole surgeries for faster recovery, less pain, and smaller scars.
+✅ Orthopedic Surgery: Specialized procedures for bone fractures, joint replacement, and spine corrections.
+✅ Cardiac Surgery: Advanced heart surgeries including bypass, valve repair, and stent placements.
+✅ Neurosurgery: Treatment for brain, spine, and nervous system disorders with precision techniques.
+✅ Plastic & Reconstructive Surgery: Restorative and cosmetic procedures to enhance function and appearance.
+✅ Post-Operative Care: Dedicated recovery units with close monitoring to ensure smooth healing.`,
+    image: "images/surgery.jpg"
+  },
+  pharmacy: {
+    title: "Pharmacy Services",
+    content: `
+✅ Prescription Dispensing: Accurate and fast dispensing of doctor-prescribed medicines.
+✅ Over-the-Counter (OTC) Medicines: A wide range of health essentials including pain relief, allergy, cold, and digestive care.
+✅ Medication Counseling: Expert guidance from licensed pharmacists on dosage, usage, and possible side effects.
+✅ Chronic Disease Support: Medication management for diabetes, hypertension, asthma, and heart disease.
+✅ Vaccinations & Preventive Care: Immunizations and preventive medicines to protect against common illnesses.
+✅ Health & Wellness Products: Vitamins, supplements, baby care, and personal health essentials.
+✅ 24/7 Availability: Round-the-clock pharmacy services for emergency needs.`,
+    image: "images/pharmacy.jpg"
+  },
+  maternity: {
+    title: "Maternity Care",
+    content: `
+✅ Prenatal Care: Regular checkups, screenings, and ultrasounds to monitor the health of both mother and baby.
+✅ High-Risk Pregnancy Management: Specialized care for conditions such as gestational diabetes, hypertension, or multiple pregnancies.
+✅ Labor & Delivery: Comfortable, safe birthing suites with experienced obstetricians and midwives.
+✅ Cesarean Section (C-Section): Expert surgical care when required for safe delivery.
+✅ Postnatal Care: Support for new mothers including wound care, breastfeeding assistance, and recovery monitoring.
+✅ Newborn Care: Immediate neonatal care, immunizations, and developmental monitoring.
+✅ Parenting & Nutrition Counseling: Guidance for mothers and families on baby care, diet, and overall wellbeing.`,
+    image: "images/maternity.jpg"
+  },
+  emergency: {
+    title: "Emergency Care",
+    content: `
+✅ 24/7 Availability: Immediate care for accidents, sudden illnesses, and life-threatening emergencies.
+✅ Trauma & Accident Care: Advanced treatment for injuries caused by road accidents, falls, or other trauma.
+✅ Cardiac Emergencies: Rapid response for heart attacks, chest pain, and arrhythmias with modern cardiac monitoring.
+✅ Stroke Management: Quick assessment and intervention to minimize brain damage and improve recovery outcomes.
+✅ Pediatric Emergencies: Specialized emergency care for infants and children.
+✅ Intensive Care Support: On-site ICU facilities for patients requiring critical monitoring and treatment.
+✅ Ambulance Services: Well-equipped ambulances with trained paramedics for emergency transport.`,
+    image: "images/emergency.jpg"
+  }
+};
+
+document.querySelectorAll('.service-link').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.dataset.service;
+    panelTitle.innerText = serviceInfo[key].title;
+    panelContent.innerText = serviceInfo[key].content;
+    document.getElementById('panelImage').src = serviceInfo[key].image;
+    panel.classList.add('open');
+  });
+});
+
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('show');
+    }
+  </script>
+	<script src="checkscript.js"></script>
+
+      <script>
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+  </script>
+
+
+</body>
+</html>
